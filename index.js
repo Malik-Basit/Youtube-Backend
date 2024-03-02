@@ -1,47 +1,10 @@
-import express from  'express' 
-import cors from  'cors'
+import express from "express";
+ import dotenv from "dotenv";
 const app = express();
-const port =3000;
-
-app.get('/',(req,res)=>{
-    res.send('hello world');
-})
-app.use(cors());
-
-app.get('/api/data',(req,res)=>{
-  let  Object=[{
-name:'Ali Khan',
-age:12,
-class:15,
-fathername:'nithin',
-color:'black&white'
-    },
-    {
-        name:'Ali Khan',
-        age:12,
-        class:15,
-        fathername:'nithin',
-        color:'black&white'
-            },
-            {
-                name:'Ali Khan',
-                age:12,
-                class:15,
-                fathername:'nithin',
-                color:'black&white'
-                    },{
-                        name:'Ali Khan',
-                        age:12,
-                        class:15,
-                        fathername:'nithin',
-                        color:'black&white'
-                            }]
-    res.send(Object);
+import connectDB from "./src/db/connection.js";
+    dotenv.config(); 
+connectDB() 
+app.listen(  process.env.PORT || 9000 ,()=>{
+console.log(`listening on ${process.env.PORT}`)
 })
 
-
-
-
-app.listen(port,()=>{
-    console.log(`server is runing at port ${port}`);
-})
